@@ -27,37 +27,37 @@ function Login() {
     };
 
     return (
-        <div className='flex items-center justify-center min-h-screen bg-gray-600'>
-            <div className='max-w-md w-full p-8 bg-gray-800 text-gray-100 shadow-lg rounded-lg'>
-                <div className='mb-4 flex justify-center'>
-                    <Logo width='100px' />
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-600">
+            <div className="max-w-md w-full p-8 bg-gray-800 text-gray-100 shadow-lg rounded-lg">
+                <div className="mb-4 flex justify-center">
+                    <Logo width="100px" />
                 </div>
-                <h2 className='text-2xl font-bold text-center mb-4'>Sign in to your account</h2>
-                <p className='text-center mb-4'>
+                <h2 className="text-2xl font-bold text-center mb-4">Sign in to your account</h2>
+                <p className="text-center mb-4">
                     Don't have an account?{' '}
-                    <Link to='/signup' className='text-primary hover:underline'>
+                    <Link to="/signup" className="text-primary hover:underline">
                         Sign Up
                     </Link>
                 </p>
-                {error && <p className='text-red-600 mb-4 text-center'>{error}</p>}
-                <form onSubmit={handleSubmit(login)}>
-                    <div className='space-y-4'>
+                {error && <p className="text-red-600 mb-4 text-center">{error}</p>}
+                <form onSubmit={handleSubmit(login)} className="w-full">
+                    <div className="space-y-4">
                         <Input
-                            label='Email'
-                            placeholder='Enter your email'
-                            type='email'
+                            label="Email"
+                            placeholder="Enter your email"
+                            type="email"
                             {...register('email', {
                                 required: true,
                                 pattern: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
                             })}
                         />
                         <Input
-                            label='Password'
-                            type='password'
-                            placeholder='Enter your password'
+                            label="Password"
+                            type="password"
+                            placeholder="Enter your password"
                             {...register('password', { required: true })}
                         />
-                        <Button type='submit' className='w-full'>
+                        <Button type="submit" className="w-full">
                             Sign in
                         </Button>
                     </div>

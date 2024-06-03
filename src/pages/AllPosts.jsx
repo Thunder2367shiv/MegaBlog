@@ -16,12 +16,11 @@ function AllPosts() {
     return (
         <div className="w-full py-8 dark:bg-gray-900">
             <Container>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                     {posts.map((post) => (
                         <div
                             key={post.$id}
                             className="p-4 hover:shadow-lg transition-shadow duration-300 dark:bg-gray-800 rounded-lg"
-                            style={{ minWidth: '250px', maxWidth: '300px', minHeight: '300px' }}
                         >
                             <PostCard {...post} />
                         </div>
