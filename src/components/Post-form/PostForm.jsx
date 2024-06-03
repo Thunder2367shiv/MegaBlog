@@ -9,7 +9,7 @@ export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || "",
-            slug: post?.$id || "",
+            slug: post?.$id || "", // Error likely occurs here
             content: post?.content || "",
             status: post?.status || "active",
         },
@@ -30,7 +30,7 @@ export default function PostForm({ post }) {
                     appwriteService.deleteFile(post.featuredimage);
                 }
     
-                const dbPost = await appwriteService.updatePost(post.$id, {
+                const dbPost = await appwriteService.updatePost(post?.$id, { // Fixed here
                     ...data,
                     featuredimage: file ? file.$id : post.featuredimage, // Ensure featuredimage is always set
                 });
