@@ -9,7 +9,7 @@ export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || "",
-            slug: post?.$id || "", // Error likely occurs here
+            slug: post?.$id || "",
             content: post?.content || "",
             status: post?.status || "active",
         },
@@ -30,7 +30,7 @@ export default function PostForm({ post }) {
                     appwriteService.deleteFile(post.featuredimage);
                 }
     
-                const dbPost = await appwriteService.updatePost(post?.$id, { // Fixed here
+                const dbPost = await appwriteService.updatePost(post.$id, {
                     ...data,
                     featuredimage: file ? file.$id : post.featuredimage, // Ensure featuredimage is always set
                 });
@@ -81,11 +81,11 @@ export default function PostForm({ post }) {
 
     return (
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
+            <div className="w-2/3 px-2 text-white">
                 <Input
                     label="Title :"
                     placeholder="Title"
-                    className="mb-4"
+                    className="mb-4 "
                     {...register("title", { required: true })}
                 />
                 <Input
@@ -99,7 +99,7 @@ export default function PostForm({ post }) {
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-2">
+            <div className="w-1/3 px-2 text-white">
                 <Input
                     label="Featured Image :"
                     type="file"
